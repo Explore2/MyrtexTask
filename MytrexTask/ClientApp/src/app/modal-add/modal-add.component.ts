@@ -9,39 +9,42 @@ import { FormGroup } from '@angular/forms';
     selector: 'modal-add',
     templateUrl: './modal-add.html',
 })
-export class ModalAdd extends ModalWindow {
+export class ModalAdd extends ModalWindow
+{
 
-    returnData: EmployeeFormResponse = new EmployeeFormResponse();
+    modalResponseData: EmployeeFormResponse = new EmployeeFormResponse();
     formGroup: FormGroup;
     placeHolderEmployee: Employee = new Employee();
 
-    constructor() {
+    constructor()
+    {
         super();
     }
 
-
-    ngOnInit() {
-
+    ngOnInit()
+    {
+        this.modalResponseData.modalType = ModalType.add;
     }
 
-    public saveData(formGroup: FormGroup) {
+    public saveData(formGroup: FormGroup)
+    {
         this.formGroup = formGroup;
-        if (formGroup.valid) {
-            this.returnData.employee = formGroup.value;
+
+        if (formGroup.valid)
+        {
+            this.modalResponseData.employee = formGroup.value;
         }
     }
 
-  
-
-    public confirm() {
-        this.returnData.modalResult = ModalResult.confirm;
-        this.returnData.modalType = ModalType.add;
-        this.modalResponse.emit(this.returnData)
+    public confirm()
+    {
+        this.modalResponseData.modalResult = ModalResult.confirm;
+        this.modalResponse.emit(this.modalResponseData)
     }
 
-    public close() {
-        this.returnData.modalResult = ModalResult.close;
-        this.returnData.modalType = ModalType.add;
-        this.modalResponse.emit(this.returnData);
+    public close()
+    {
+        this.modalResponseData.modalResult = ModalResult.close;
+        this.modalResponse.emit(this.modalResponseData);
     }
 }

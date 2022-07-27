@@ -25,14 +25,14 @@ namespace MytrexTask
         /// </summary>
         /// <param name="input">Data provided in request</param>
         /// <returns>id of the new employee</returns>
-        public async Task<int> CreateEmployeeAsync(CreateEmployeeCommand input)
+        public async Task<Employee> CreateEmployeeAsync(CreateEmployeeCommand input)
         {
             var employee = input.ToEmployee();
             _context.Add(employee);
 
             await _context.SaveChangesAsync();
 
-            return employee.Id;
+            return employee;
         }
 
         /// <summary>
@@ -41,10 +41,7 @@ namespace MytrexTask
         public async Task<List<Employee>> GetEmployeesAsync()
         {
             List<Employee> employees = await _context.Employees.ToListAsync();
-            foreach(var emp in employees)
-            {
-                Console.WriteLine($"{emp.Id} | {emp.FirstName}");
-            }
+
             return employees;
         }
 
@@ -66,7 +63,7 @@ namespace MytrexTask
             input.UpdateEmployee(employee);
 
             await _context.SaveChangesAsync();
-            Console.WriteLine(_context.Employees.FirstOrDefault(x => x.Id == input.Id).Departament);
+
             return employee;
         }
 

@@ -48,9 +48,6 @@
     <None Remove="ClientApp\src\app\modal-edit\modal-edit-response.ts" />
     <None Remove="ClientApp\src\app\modal-edit\modal-edit.component.ts" />
     <None Remove="ClientApp\src\app\modal-window\modal-window.ts" />
-    <None Remove="ClientApp\src\app\notification\notification.component.ts" />
-    <None Remove="ClientApp\src\app\notification\notification.model.ts" />
-    <None Remove="ClientApp\src\app\notification\notification.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

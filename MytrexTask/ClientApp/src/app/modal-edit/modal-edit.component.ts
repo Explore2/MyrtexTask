@@ -1,7 +1,6 @@
-﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Subject } from 'rxjs';
+﻿import { Component, Input } from '@angular/core';
 import { ModalWindow } from '../modal-window/modal-window';
-import { ModalResult, ModalType, ModalResponse } from '../modal-window/modal-response';
+import { ModalResult, ModalType } from '../modal-window/modal-response';
 import { ModalEditResponse } from './modal-edit-response';
 import { Employee } from '../employees-list/employee';
 import { FormGroup } from '@angular/forms';
@@ -10,39 +9,43 @@ import { FormGroup } from '@angular/forms';
     selector: 'modal-edit',
     templateUrl: './modal-edit.html',
 })
-export class ModalEdit extends ModalWindow {
+export class ModalEdit extends ModalWindow
+{
 
     @Input() employee: Employee;
-    returnData : ModalEditResponse = new ModalEditResponse();
+    modalResponseData : ModalEditResponse = new ModalEditResponse();
     formGroup: FormGroup;
-    placeHolderEmployee: Employee = new Employee();
 
-    constructor() {
+    constructor()
+    {
         super();
     }
 
-    ngOnInit() {
-
+    ngOnInit()
+    {
+        this.modalResponseData.modalType = ModalType.edit;
     }
 
-    public saveData(formGroup: FormGroup) {
+    public saveData(formGroup: FormGroup)
+    {
         this.formGroup = formGroup;
-        if (formGroup.valid) {
-            this.returnData.employee = formGroup.value;
+
+        if (formGroup.valid)
+        {
+            this.modalResponseData.employee = formGroup.value;
         }
+        this.modalResponseData.employee.id = this.employee.id;
     }
 
-    public confirm() {
-        this.returnData.modalResult = ModalResult.confirm;
-        this.returnData.modalType = ModalType.edit;
-        this.returnData.employeeId = this.employeeId;
-        this.returnData.employee.id = this.employee.id;
-        this.modalResponse.emit(this.returnData)
+    public confirm()
+    {
+        this.modalResponseData.modalResult = ModalResult.confirm;
+        this.modalResponse.emit(this.modalResponseData)
     }
-    public close() {
-        this.returnData.modalResult = ModalResult.close;
-        this.returnData.modalType = ModalType.edit;
-        this.returnData.employeeId = this.employeeId
-        this.modalResponse.emit(this.returnData);
+
+    public close()
+    {
+        this.modalResponseData.modalResult = ModalResult.close;
+        this.modalResponse.emit(this.modalResponseData);
     }
 }

@@ -9,7 +9,7 @@
                 <h4 class="modal-title">Добавление</h4>
             </div>
             <div class="modal-body">
-                <employee-form [employee]="employee" (returnEmployee)="saveData($event)"></employee-form>
+                <employee-form [employee]="employee" (employeeFormReturn)="saveData($event)"></employee-form>
             </div>
             <div class="modal-footer">
                 <button [disabled]="formGroup.invalid" type="button" class="btn btn-primary"

@@ -3,19 +3,22 @@ import { Subject } from 'rxjs';
 import { ModalResult, ModalType, ModalResponse } from './modal-response';
 
 
-export abstract class ModalWindow implements OnInit {
+export abstract class ModalWindow implements OnInit
+{
 
     @Input() employeeId: number;
     @Output() modalResponse: EventEmitter<ModalResponse> = new EventEmitter<ModalResponse>();
 
-
-    constructor() {
+    constructor()
+    {
     }
 
-   
-    ngOnInit() {
+    ngOnInit()
+    {
     }
 
     public abstract confirm()
+
     public abstract close()
+
 }

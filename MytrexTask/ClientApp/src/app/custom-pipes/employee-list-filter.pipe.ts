@@ -5,15 +5,20 @@ import { Employee } from "../employees-list/employee";
     name: 'filter',
     pure: false
 })
-export class FilterPipe implements PipeTransform {
-    transform(items: Array<any>, employee: Employee, strict : boolean) {
-        var filter = Object.entries(employee);
-        if (items != undefined && filter != undefined) {
-            return items.filter(item => {
-                let notMatchingField = Object.keys(employee)
-                    .find(key => {
-                        if (key != "id" && employee[key] != null) {
-                            return !(item[key].toString().includes(employee[key].toString()));
+export class FilterPipe implements PipeTransform
+{
+    transform(items: Array<any>, filter: Employee): Array<Employee>
+    {
+        if (items != undefined && filter != undefined)
+        {
+            return items.filter(item =>
+            {
+                let notMatchingField = Object.keys(filter)
+                    .find(key =>
+                    {
+                        if (key != "id" && filter[key] != null) 
+                        {
+                            return !(item[key].toString().includes(filter[key].toString()));
                         }
                     });
                 return !notMatchingField;

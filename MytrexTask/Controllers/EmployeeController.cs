@@ -39,16 +39,15 @@ namespace MytrexTask.Controllers
                 return BadRequest();
             }
 
-            var id = await _service.CreateEmployeeAsync(input);
+            var employee = await _service.CreateEmployeeAsync(input);
 
-            return CreatedAtAction(nameof(GetEmployees), new { id = id }, input);
+            return CreatedAtAction(nameof(GetEmployees), employee);
 
         }
 
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult<Employee>> DeleteEmployee(int id)
         {
-            Console.WriteLine("Delete reached");
             if (!ModelState.IsValid)
             {
                 return BadRequest();

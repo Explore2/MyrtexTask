@@ -1,7 +1,7 @@
 ﻿<form [formGroup]="employeeFormGroup" class="mb-3">
     <div class="p-1">
         <label for="departament" class="form-label">Департамент</label>
-        <input type="text" class="form-control" id="departament" [formControl]="departament" (change)="emitData">
+        <input type="text" class="form-control" id="departament" [formControl]="departament" (change)="emitData()">
     </div>
     <div class="p-1">
         <label class="form-label" for="firstName">Имя: </label>
@@ -28,9 +28,9 @@
         <input class="form-control" id="salary"  type="number" formControlName="salary" (change)="emitData()">
     </div>
     <div class="p-1" *ngIf="employeeFormGroup.invalid">
-        <div *ngFor="let err of errors()">
-            <div class="row" *ngIf="employeeFormGroup.get(err.key).touched || employeeFormGroup.get(err.key).dirty"  class="alert alert-danger">
-                <p>{{ err.mes }}</p>
+        <div *ngFor="let error of TranslateErrorsToMessage()">
+            <div class="row" *ngIf="employeeFormGroup.get(error.key).touched || employeeFormGroup.get(error.key).dirty"  class="alert alert-danger">
+                <p>{{ error.messsage }}</p>
             </div>
         </div>
     </div>
