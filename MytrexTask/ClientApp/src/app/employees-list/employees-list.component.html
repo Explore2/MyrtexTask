@@ -1,0 +1,67 @@
+﻿<div class="container" (keyup.escape)="closeModal($event)">
+    <div class="row">
+        <h2 class="mb-1">Список моделей</h2>
+        <button (click)="openModal(0,2)" class="btn btn-primary m-1">Добавить</button>
+    </div>
+    <div class="row">
+       
+        <table class="table table-striped table-hover w-">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <label (click)="changeOrder('departament')" i18n>Департамент</label>
+                        <input type="text" id="departament" placeholder="Департамент" class="form-control" [(ngModel)]="filterEmployee.departament" />
+                    </th>
+                    <th scope="col">
+                        <label (click)="changeOrder('firstName')">Имя</label>
+                        <input type="text" placeholder="Имя" class="form-control" [(ngModel)]="filterEmployee.firstName"/>
+                    </th>
+                    <th scope="col">
+                        <label (click)="changeOrder('secondName')">Фамилия</label>
+                        <input type="text" placeholder="Фамилия" class="form-control" [(ngModel)]="filterEmployee.secondName"/>
+                    </th>
+                    <th scope="col">
+                        <label (click)="changeOrder('middleName')">Отчество</label>
+                        <input type="text" placeholder="Отчество" class="form-control" [(ngModel)]="filterEmployee.middleName"/>
+                    </th>
+                    <th scope="col">
+                        <label (click)="changeOrder('dateOfBirth')">Дата рождения</label>
+                        <input type="date" placeholder="Дата рождения" class="form-control" [(ngModel)]="filterEmployee.dateOfBirth"/>
+                    </th>
+                    <th scope="col">
+                        <label (click)="changeOrder('dateOfEmployment')">Дата устройста</label>
+                        <input type="date" placeholder="Дата устройства" class="form-control" [(ngModel)]="filterEmployee.dateOfEmployment"/>
+                    </th>
+                    <th scope="col">
+                        <label (click)="changeOrder('salary')">Зарплата</label>
+                        <input type="number" placeholder="Зарплата" class="form-control" [(ngModel)]="filterEmployee.salary"/>
+                    </th>
+                    <th scope="col">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr *ngFor="let employee of employees  | orderBy:orderKey | filter:filterEmployee">
+                    <td>{{employee.departament}}</td>
+                    <td>{{employee.firstName}}</td>
+                    <td>{{employee.secondName}}</td>
+                    <td>{{employee.middleName}}</td>
+                    <td>{{employee.dateOfBirth | date:'mediumDate' : locale:'ru-RU'}}</td>
+                    <td>{{employee.dateOfEmployment | date:'mediumDate' : locale:'ru-RU'}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button id="{{employee.id}}" (click)="openModal(employee.id, 1)" class="btn btn-primary btn-block">Редактировать</button>
+                            <button id="{{employee.id}}" (click)="openModal(employee.id, 0)" class="btn btn-danger btn-block">Удалить</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <modal-delete *ngIf="modalType == 0" [employeeId]="modalEmployee.id" (modalResponse)="closeModal($event)"></modal-delete>
+    <modal-edit *ngIf="modalType == 1" [employee]="modalEmployee" (modalResponse)="closeModal($event)"></modal-edit>
+    <modal-add *ngIf="modalType == 2" (modalResponse)="closeModal($event)"></modal-add>
+</div>
+

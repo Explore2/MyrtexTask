@@ -1,0 +1,27 @@
+﻿<div class="modal"
+     tabindex="-1"
+     role="dialog"
+     style="display:block"
+     (keyup.enter)="confirm()">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Удаление</h4>
+            </div>
+            <div class="modal-body">
+                <p>Подтвердить удаление?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger"
+                        (click)="confirm()">
+                    Подтвердить
+                </button>
+                <button type="button" class="btn btn-secondary"
+                        (click)="close()">
+                    Закрыть
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿<form [formGroup]="employeeFormGroup" class="mb-3">
+    <div class="p-1">
+        <label for="departament" class="form-label">Департамент</label>
+        <input type="text" class="form-control" id="departament" [formControl]="departament" (change)="emitData">
+    </div>
+    <div class="p-1">
+        <label class="form-label" for="firstName">Имя: </label>
+        <input class="form-control" id="firstName" type="text" [formControl]="firstName" (change)="emitData()">
+    </div>
+    <div class="p-1">
+        <label class="form-label" for="secondName">Фамилия: </label>
+        <input class="form-control" id="secondName" type="text" [formControl]="secondName" (change)="emitData()">
+    </div>
+    <div class="p-1">
+        <label class="form-label" for="middleName">Отчество: </label>
+        <input class="form-control" id="middleName" type="text" [formControl]="middleName" (change)="emitData()">
+    </div>
+    <div class="p-1">
+        <label class="form-label" for="dateOfBirth">Дата рождения: </label>
+        <input class="form-control" id="dateOfBirth" type="date" [formControl]="dateOfBirth" value="{{ employee.dateOfBirth | date:'yyyy-MM-dd'}}" (change)="emitData()">
+    </div>
+    <div class="p-1">
+        <label class="form-label" for="dateOfEmployment">Дата устройства: </label>
+        <input class="form-control" id="dateOfEmployment" type="date" [formControl]="dateOfEmployment" value="{{ employee.dateOfEmployment | date:'yyyy-MM-dd'}}" (change)="emitData()">
+    </div>
+    <div class="p-1">
+        <label class="form-label" for="salary">Зарплата: </label>
+        <input class="form-control" id="salary"  type="number" formControlName="salary" (change)="emitData()">
+    </div>
+    <div class="p-1" *ngIf="employeeFormGroup.invalid">
+        <div *ngFor="let err of errors()">
+            <div class="row" *ngIf="employeeFormGroup.get(err.key).touched || employeeFormGroup.get(err.key).dirty"  class="alert alert-danger">
+                <p>{{ err.mes }}</p>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+﻿<div class="modal"
+     tabindex="-1"
+     role="dialog"
+     style="display:block; overflow-y:auto"
+     (keyup.enter)="confirm()">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Добавление</h4>
+            </div>
+            <div class="modal-body">
+                <employee-form [employee]="employee" (returnEmployee)="saveData($event)"></employee-form>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="formGroup.invalid" type="button" class="btn btn-primary"
+                        (click)="confirm()">
+                    Потдвердить
+                </button>
+                <button type="button" class="btn btn-secondary"
+                        (click)="close()">
+                    Закрыть
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
