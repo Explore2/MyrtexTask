@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace MytrexTask.Models
+namespace MyrtexTask.Models
 {
     public class EmployeeDbContext : DbContext
     {

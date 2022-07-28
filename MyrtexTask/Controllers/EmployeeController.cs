@@ -1,17 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
-
-using Microsoft.Extensions.Options;
-using MytrexTask.Schemas;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyrtexTask.Schemas;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using MytrexTask.Models;
-using System;
+using MyrtexTask.Models;
 using Microsoft.Extensions.Logging;
-using System.ComponentModel.DataAnnotations;
 
-namespace MytrexTask.Controllers
+namespace MyrtexTask.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MytrexTask.Models;
-using MytrexTask.Schemas;
+using MyrtexTask.Models;
+using MyrtexTask.Schemas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MytrexTask
+namespace MyrtexTask
 {
     public class EmployeeService
     {

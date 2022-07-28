@@ -1,9 +1,9 @@
-﻿using MytrexTask.Models;
+﻿using MyrtexTask.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MytrexTask.Schemas
+namespace MyrtexTask.Schemas
 {
     public class UpdateEmployeeCommand
     {

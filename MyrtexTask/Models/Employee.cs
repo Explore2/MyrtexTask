@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MytrexTask.Models
+namespace MyrtexTask.Models
 {
     public class Employee
     {
